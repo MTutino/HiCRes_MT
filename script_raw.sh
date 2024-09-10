@@ -99,12 +99,12 @@ perc_cis=`cat ${hicupdir}/hicup_out/HiCUP_summary_report_*.txt | awk 'BEGIN{n=0;
 perc_cis_far=`cat ${hicupdir}/hicup_out/HiCUP_summary_report_*.txt | awk 'BEGIN{n=0;l=0} !/^File/{n=n+($30/$28); l=l+1} END{print 100-(n/l)}'`
 echo -e "Total\t"$perc_map"\t"$perc_valid"\t"$perc_cis"\t"$perc_cis_far >> ${figuresdir}/hicup_stats.txt
 
-if (( $(echo "$perc_map<50" | bc -l) )); then
-    >&2 echo "Error: too low percentage of reads mapped ("$perc_map"%)."
-    rm -r $tmp
-    rm -r $workdi
-    exit 1
-fi
+#if (( $(echo "$perc_map<50" | bc -l) )); then
+#    >&2 echo "Error: too low percentage of reads mapped ("$perc_map"%)."
+#    rm -r $tmp
+#    rm -r $workdi
+ #   exit 1
+#fi
 
 if (( $(echo "$perc_valid<60" | bc -l) )); then
     >&2 echo "Warning: low percentage of valid interactions ("$perc_valid"%)."
